@@ -27,7 +27,8 @@ CharacterEscapeSequence {SingleEscapeCharacter}|{NonEscapeCharacter}
 EscapeSequence {CharacterEscapeSequence}|{OctalEscapeSequence}|{HexEscapeSequence}|{UnicodeEscapeSequence}
 DoubleStringCharacter ([^\"\\\n\r]+)|(\\{EscapeSequence})|{LineContinuation}
 SingleStringCharacter ([^\'\\\n\r]+)|(\\{EscapeSequence})|{LineContinuation}
-StringLiteral (\"{DoubleStringCharacter}*\")|(\'{SingleStringCharacter}*\')
+EmojiStringCharacter ([^\u270C\\\n\r]+)|(\\{EscapeSequence})|{LineContinuation}
+StringLiteral (\"{DoubleStringCharacter}*\")|(\'{SingleStringCharacter}*\')|((\u270C){EmojiStringCharacter}*(\u270C)) // TODO: do not include quotes
 RegularExpressionNonTerminator [^\n\r]
 RegularExpressionBackslashSequence \\{RegularExpressionNonTerminator}
 RegularExpressionClassChar [^\n\r\]\\]|{RegularExpressionBackslashSequence}
@@ -124,7 +125,7 @@ RegularExpressionLiteral {RegularExpressionBody}\/{RegularExpressionFlags}
 "🌜"                                parser.restricted = false; return "{";
 "🌛"                                return "}";
 "🌘"                                parser.restricted = false; return "(";
-"🌒"                                return ")";
+"🌒"                                return ")";     
 "["                                parser.restricted = false; return "[";
 "]"                                return "]";
 "🧒"                                return ".";
