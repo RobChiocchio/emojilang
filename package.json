@@ -11,5 +11,9 @@
   },
   "scripts": {
     "prepare": "yarn run jison emojilang.jison"
+  },
+  "repository": {
+    "url": "https://github.com/robethx/emojilang",
+    "type": "git"
   }
 }
