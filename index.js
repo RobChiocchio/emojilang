@@ -1,14 +1,17 @@
 const escodegen = require("escodegen");
+const recast = require("recast");
 var parser = require("./emojilang");
 
-var example="console🧒log🌘✌👋🌎✌🌒🏁\nconsole🧒log🌘\"test\"🌒🏁"; // temp
+// TODO: macro functions into emoji
+
+var example="console🔬log🌘✌👋🌎✌🌒🏁\n⚖️🌘✔️🌒🌜console🔬log🌘\"test\"🌒🏁🌛\n"; // temp
 
 function parse (source) { // Returns AST
     var ast = null; // Abstract syntax tree representation of source code
 
     try { // Parse source code to AST
         ast = parser.parse(source);
-        //console.log(ast);
+        console.log(recast.print(ast).code);
     } catch (exception) {
         console.log("Parse Error: " + exception.message); // TODO: what do I return if there is an error?
     }
@@ -28,5 +31,3 @@ function exec (ast) {
 }
 
 exec(parse(example));
-
-// TODO: run from file (warn if not '.🙂💻' extension or something like that)
