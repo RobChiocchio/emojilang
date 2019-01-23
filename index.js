@@ -1,5 +1,4 @@
 const escodegen = require("escodegen");
-const recast = require("recast");
 var parser = require("./emojilang");
 
 // TODO: macro functions into emoji
@@ -11,7 +10,7 @@ function parse (source) { // Returns AST
 
     try { // Parse source code to AST
         ast = parser.parse(source);
-        console.log(recast.print(ast).code);
+        console.log(ast);
     } catch (exception) {
         console.log("Parse Error: " + exception.message); // TODO: what do I return if there is an error?
     }
