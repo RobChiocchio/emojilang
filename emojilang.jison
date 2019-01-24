@@ -169,6 +169,7 @@ RegularExpressionLiteral {RegularExpressionBody}\/{RegularExpressionFlags}
 "🤷"                                return "|";
 "🙌👉"                               return "^=";
 "🙌"                                return "^";
+"🌳"                                return "IDENTIFIER";
 //"~"                                parser.restricted = false; return "~";
 <<EOF>>                            return "EOF";
 .                                  return "ERROR";

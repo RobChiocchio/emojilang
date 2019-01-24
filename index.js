@@ -1,4 +1,6 @@
 const escodegen = require("escodegen");
+const babel = require("@babel/core");
+
 var parser = require("./emojilang");
 
 module.exports = {
@@ -16,6 +18,8 @@ var parse = exports.parse = function (source, verbose = false) { // Returns AST
         console.log("Parse Error: " + exception.message); // TODO: what do I return if there is an error?
     }
 
+    //ast = babel.transformFromAstSync(ast); // DEBUG
+
     if (verbose) {
         console.log(ast); //TODO: find a better library for printing AST
     }
@@ -27,6 +31,8 @@ var generate = exports.generate = function (ast, verbose = false) {
     // TODO: validate AST (and throw error if invalid?)
     var code = escodegen.generate(ast); // Generate ECMAScript code from AST
     // TODO: other processing functions
+
+    code = babel.transformSync(code, { code: true, ast: false, sourceMaps: false }).code; // Transform JSified code with Babel DEBUG
 
     if (verbose) {
         console.log(code);
@@ -61,7 +67,7 @@ var run = exports.run = function (source, verbose = false) { // Parses, generate
 }
 
 function test () { // Run if not called as a module
-    var example = "console🔬log🌘✌👋🌎✌🌒🏁\n⚖️🌘✔️🌒🌜console🔬log🌘\"test\"🌒🏁🌛\n";
+    var example = "🌳🌘✌👋🌎✌🌒🏁\n⚖️🌘✔️🌒🌜console🔬log🌘\"test\"🌒🏁🌛\n";
     run(example, true);
 }
 

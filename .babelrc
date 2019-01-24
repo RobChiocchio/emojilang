@@ -1,0 +1,16 @@
+{
+    "parserOpts": {
+        "plugins": ["jsx", "flow"]
+    },
+    "plugins": [
+        ["minify-replace", {
+            "replacements": [{
+                "identifierName": "🌳",
+                "replacement": {
+                    "type": "Function",
+                    "value": "console.log"
+                }
+            }]
+        }]
+    ]
+}
