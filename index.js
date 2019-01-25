@@ -18,7 +18,7 @@ var parse = exports.parse = function (source, verbose = false) { // Returns AST
         console.log("Parse Error: " + exception.message); // TODO: what do I return if there is an error?
     }
 
-    //ast = babel.transformFromAstSync(ast); // DEBUG
+    //ast = babel.transformFromAstSync(ast); // DEBUG:
 
     if (verbose) {
         console.log(ast); //TODO: find a better library for printing AST
