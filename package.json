@@ -6,14 +6,13 @@
   "author": "Rob Chiocchio",
   "license": "MIT",
   "dependencies": {
-    "@babel/core": "^7.2.2",
     "babel-plugin-minify-replace": "^0.5.0",
     "emoji-regex": "^7.0.3",
     "escodegen": "^1.11.0",
     "jison": "^0.4.18"
   },
   "scripts": {
-    "prepublish": "yarn run jison emojilang.jison"
+    "prepack": "yarn run jison emojilang.jison"
   },
   "repository": {
     "url": "https://github.com/robethx/emojilang",

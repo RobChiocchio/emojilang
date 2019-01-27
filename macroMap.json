@@ -1,0 +1,10 @@
+{
+    "identifiers": {
+        "📣": "console.log",
+        "⚠️": "console.warn",
+        "❗": "console.error",
+        "🗑️": "console.clear",
+        "❓": "promptInput"
+        
+    }
+}
