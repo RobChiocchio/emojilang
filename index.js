@@ -62,7 +62,9 @@ var run = exports.run = function (source, verbose = false) { // Parses, generate
 }
 
 function test () { // Run if not called as a module
-    var example = "📣🌘✌👋🌎✌🌒🏁\n⚖️🌘✔️🌒🌜console🔬log🌘\"test\"🌒🏁🌛\n";
+    const fs = require("fs");
+    var example = fs.readFileSync("test.js", "utf8");
+    //var example = "📣🌘✌👋🌎✌🌒🏁\n⚖️🌘✔️🌒🌜console🔬log🌘\"test\"🌒🏁🌛\n";
     run(example, true);
 }
 
